@@ -331,7 +331,6 @@ function triggerVeraVoice() {
 // ─── Init ───
 document.addEventListener('DOMContentLoaded', function() {
   observeElements();
-  animateCounters();
   handleScroll();
   setTimeout(function() {
     var tip = document.getElementById('voiceTip');
