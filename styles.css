@@ -364,17 +364,19 @@ h4 { font-size: 1.125rem; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(192,57,43,0.15);
-  border: 1px solid rgba(192,57,43,0.3);
-  padding: 8px 20px;
+  background: rgba(11,29,58,0.8);
+  border: 1px solid rgba(200,169,81,0.35);
+  padding: 10px 22px;
   border-radius: 30px;
   margin-bottom: 24px;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 .hero-badge-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--gold);
   animation: pulse-dot 2s infinite;
 }
 @keyframes pulse-dot {
@@ -383,10 +385,10 @@ h4 { font-size: 1.125rem; }
 }
 .hero-badge span {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--red);
+  letter-spacing: 0.14em;
+  color: var(--gold);
 }
 .hero h1 {
   color: var(--white);
