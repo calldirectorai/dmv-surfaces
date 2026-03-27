@@ -285,10 +285,47 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 });
 
 function resetContactForm() {
-  const form = document.getElementById('contact-form');
+  var form = document.getElementById('contact-form');
   form.reset();
   form.style.display = '';
   document.getElementById('form-success').classList.add('hidden');
+}
+
+// ─── Vera Voice Launcher ───
+function triggerVeraVoice() {
+  // Hide tooltip
+  var tip = document.getElementById('voiceTip');
+  if (tip) tip.style.display = 'none';
+  
+  // Method 1: Try PMG CSS selectors
+  var pmgBtn = document.querySelector('.pmg-launcher-btn, .vera-launcher-btn, [class*="launcher"]');
+  if (pmgBtn) { pmgBtn.click(); return; }
+  
+  // Method 2: Try button text match
+  var allBtns = document.querySelectorAll('button, [role="button"]');
+  for (var i = 0; i < allBtns.length; i++) {
+    var btn = allBtns[i];
+    if (btn.closest('.voice-widget, .navbar, .hero')) continue;
+    if (btn.textContent && btn.textContent.trim().length < 30) { btn.click(); return; }
+  }
+  
+  // Method 3: Position-based (bottom-right viewport) - most reliable for PMG
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var els = document.elementsFromPoint(vw - 75, vh - 100);
+  for (var j = 0; j < els.length; j++) {
+    var el = els[j];
+    if (el.tagName === 'BUTTON' || el.role === 'button' || el.onclick) {
+      if (!el.closest('.voice-widget')) { el.click(); return; }
+    }
+  }
+  
+  // Fallback: Navigate to contact page
+  showPage('contact');
+  // Fallback: Navigate to contact page
+  showPage('contact');
+  // Fallback: Navigate to contact page
+  showPage('contact');
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 // ─── Init ───
@@ -296,4 +333,8 @@ document.addEventListener('DOMContentLoaded', function() {
   observeElements();
   animateCounters();
   handleScroll();
+  setTimeout(function() {
+    var tip = document.getElementById('voiceTip');
+    if (tip) tip.style.display = 'none';
+  }, 15000);
 });
