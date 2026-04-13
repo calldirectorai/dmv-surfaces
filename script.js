@@ -159,12 +159,3 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tip) tip.style.display = 'none';
   }, 15000);
 });
-
-(function(){
-  var addr = 'info' + '@' + 'dmvsurfaces.com';
-  var mailto = 'mai' + 'lto:' + addr;
-  ['footer-email-0','footer-email-1'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el){ el.href = mailto; }
-  });
-})();
