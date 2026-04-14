@@ -104,9 +104,33 @@ function animateCounters() {
 // ─── Contact Form ───
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  this.style.display = 'none';
+  var submitBtn = this.querySelector('[type="submit"]');
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+
+  var name = document.getElementById('c-name').value;
+  var phone = document.getElementById('c-phone').value;
+  var email = document.getElementById('c-email').value;
+  var service = document.getElementById('c-service').value;
+  var message = document.getElementById('c-message').value;
+
+  // Use XMLHttpRequest — avoids preflight CORS check on simple requests
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://app.calldirector.ai/api/webhooks/flow/2330/181e13342e9fa2e746905acd01c727f21fe8e70c054c2ffc7a1f968e24b7e86f', true);
+  xhr.setRequestHeader('Content-Type', 'text/plain');
+  xhr.send(JSON.stringify({
+    webhook_contactName: name,
+    webhook_contactPhone: phone,
+    webhook_contactEmail: email,
+    webhook_service: service,
+    webhook_message: message
+  }));
+
+  document.getElementById('contact-form').style.display = 'none';
   document.getElementById('form-success').classList.remove('hidden');
+  setTimeout(resetContactForm, 5000);
 });
+
 
 function resetContactForm() {
   var form = document.getElementById('contact-form');
