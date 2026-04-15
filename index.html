@@ -554,7 +554,11 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     webhook_contactEmail: email,
     webhook_service:      service || 'Not specified',
     webhook_message:      message || 'No message',
-    webhook_source:       'DMV Surfaces Website'
+    webhook_source:       'DMV Surfaces Website',
+    data: {
+      service: service || 'Not specified',
+      message: message || 'No message'
+    }
   };
 
   console.log('[DMV Form] Sending payload:', JSON.stringify(payload, null, 2));
