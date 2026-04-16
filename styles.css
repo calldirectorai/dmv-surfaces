@@ -222,6 +222,11 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 .footer-link:hover { color: var(--gold); padding-left: 4px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
 .footer-bottom a { color: var(--gold); }
+.footer-tagline { margin-bottom: 24px; }
+.footer-tagline-text { font-family: var(--font-serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; color: var(--white); margin-bottom: 14px; }
+.footer-tagline-text em { font-style: italic; font-weight: 500; color: var(--gold); position: relative; }
+.footer-tagline-text em::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 4px; height: 2px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); border-radius: 2px; }
+.footer-tagline-line { width: 48px; height: 2px; background: var(--gold); opacity: 0.5; }
 .social-links { display: flex; gap: 10px; margin-top: 20px; }
 .social-link { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(200,169,81,0.25); display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); transition: var(--transition); }
 .social-link:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200,169,81,0.3); }
