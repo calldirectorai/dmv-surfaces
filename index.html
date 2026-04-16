@@ -214,7 +214,10 @@
 <!-- HEADER -->
 <header class="header transparent" id="main-header">
   <div class="header-inner">
-    <a class="logo-wrapper" onclick="showPage('home')"><img src="https://paymegpt.com/objects/quick-uploads/218/d0a8b47609599c61.png" alt="DMV Surfaces" class="logo-img"></a>
+    <a class="logo-wrapper" onclick="showPage('home')">
+      <img src="https://paymegpt.com/objects/quick-uploads/218/850f7ff164dd3d84.png" alt="DMV Surfaces" class="logo-img">
+      <span class="logo-subtitle">Commercial Flooring &amp; Consulting</span>
+    </a>
     <nav class="nav-links">
       <a class="nav-link" data-page="about" onclick="showPage('about')">About</a>
       <a class="nav-link" data-page="services" onclick="showPage('services')">Services</a>
@@ -233,7 +236,7 @@
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-close" onclick="closeMobileMenu()">&times;</div>
-  <div style="display:inline-flex;align-items:center;"><img src="https://paymegpt.com/objects/quick-uploads/218/d0a8b47609599c61.png" alt="DMV Surfaces" style="height:60px;width:auto;max-width:200px;display:block;"></div>
+  <div style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;"><img src="https://paymegpt.com/objects/quick-uploads/218/850f7ff164dd3d84.png" alt="DMV Surfaces" style="height:64px;width:auto;display:block;"><span style="font-family:var(--font-sans);font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);opacity:0.85;white-space:nowrap;">Commercial Flooring &amp; Consulting</span></div>
   <a class="mobile-link" onclick="showPage('about');closeMobileMenu()">About</a>
   <a class="mobile-link" onclick="showPage('services');closeMobileMenu()">Services</a>
   <a class="mobile-link" onclick="showPage('consulting');closeMobileMenu()">Consulting</a>
@@ -247,24 +250,62 @@
 <!-- HOME -->
 <div id="page-home" class="page-section active">
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('https://paymegpt.com/objects/quick-uploads/218/f16caba678e173d1.jpg')"></div>
-    <div class="hero-overlay"></div>
-    <div class="container">
+    <div class="hero-slideshow">
+      <!-- SLIDE 1: Gym (existing image) -->
+      <div class="hero-slide" style="background-image:url('https://paymegpt.com/objects/quick-uploads/218/f16caba678e173d1.jpg')"></div>
+      <!-- SLIDE 2: Restaurant — REPLACE URL BELOW with your hosted restaurant image -->
+      <div class="hero-slide" style="background-image:url('https://app.calldirector.ai/objects/generated-images/218/1776359027495-2cf314ad5097fddc.png')"></div>
+      <!-- SLIDE 3: Luxury Hotel Lobby — REPLACE URL BELOW with your hosted hotel image -->
+      <div class="hero-slide" style="background-image:url('https://app.calldirector.ai/objects/generated-images/218/1776359076003-08a8252340c4396a.png')"></div>
+    </div>
+    <div class="hero-container">
       <div class="hero-content">
+        <div class="hero-eyebrow fade-up">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-text">DC · Maryland · Virginia</span>
+        </div>
         <div class="hero-badge fade-up"><div class="hero-badge-dot"></div><span>Now Offering Consulting</span></div>
-        <h1 class="fade-up fade-up-delay-1">Build Together,<br>With <em class="text-gold" style="font-style:italic;position:relative;display:inline-block">Trust<span style="position:absolute;bottom:-6px;left:0;right:0;height:3px;background:var(--gold);border-radius:2px"></span></em></h1>
+        <h1 class="fade-up fade-up-delay-1">Build Together,<br>With <em>Trust</em></h1>
         <p class="fade-up fade-up-delay-2"><strong>Premium commercial flooring services</strong> and strategic consulting across Washington DC, Maryland, and Virginia. Over 30 years of combined expertise &mdash; now elevated.</p>
         <div class="hero-buttons fade-up fade-up-delay-3">
-          <a class="btn btn-gold" onclick="showPage('contact')" style="cursor:pointer;min-width:280px;padding:18px 40px;font-size:1.05rem">Talk to Us &nbsp;&rarr;</a>
-          <a class="btn btn-outline" onclick="showPage('portfolio')" style="cursor:pointer;min-width:240px;padding:18px 40px;font-size:1.05rem">View Our Work &nbsp;&#9638;</a>
+          <a class="hero-btn-primary" onclick="showPage('contact')" style="cursor:pointer">Talk to Us &rarr;</a>
+          <a class="hero-btn-secondary" onclick="showPage('portfolio')" style="cursor:pointer">View Our Work</a>
         </div>
       </div>
     </div>
-    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(11,29,58,0.85);border-top:1px solid rgba(200,169,81,0.15);padding:20px 0;z-index:10">
-      <div class="container">
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
-          <div class="fade-up fade-up-delay-1" style="display:flex;align-items:center;gap:14px;padding:0 8px"><div style="width:44px;height:44px;border-radius:10px;background:rgba(200,169,81,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div><div><div style="color:var(--white);font-weight:700;font-size:0.95rem">30+ Years Combined</div><div style="color:rgba(255,255,255,0.5);font-size:0.8rem">Industry Expertise</div></div></div>
-          <div class="fade-up fade-up-delay-2" style="display:flex;align-items:center;gap:14px;padding:0 8px;border-left:1px solid rgba(255,255,255,0.1)"><div style="width:44px;height:44px;border-radius:10px;background:rgba(200,169,81,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div style="color:var(--white);font-weight:700;font-size:0.95rem">Serving the DMV</div><div style="color:rgba(255,255,255,0.5);font-size:0.8rem">DC, Maryland &amp; Virginia</div></div></div>
+    <div class="hero-progress">
+      <div class="hero-progress-dot"></div>
+      <div class="hero-progress-dot"></div>
+      <div class="hero-progress-dot"></div>
+    </div>
+    <div class="hero-trust-bar">
+      <div class="hero-trust-grid">
+        <div class="hero-trust-item fade-up fade-up-delay-1">
+          <div class="hero-trust-icon">
+            <svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div>
+            <div class="hero-trust-title">Certified Independent Inspections</div>
+            <div class="hero-trust-sub">Unbiased Expert Assessments</div>
+          </div>
+        </div>
+        <div class="hero-trust-item fade-up fade-up-delay-2">
+          <div class="hero-trust-icon">
+            <svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.6" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="hero-trust-title">Serving the DMV</div>
+            <div class="hero-trust-sub">DC, Maryland &amp; Virginia</div>
+          </div>
+        </div>
+        <div class="hero-trust-item fade-up fade-up-delay-3">
+          <div class="hero-trust-icon">
+            <svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2l2.39 7.36H22l-6.19 4.5L18.2 21 12 16.5 5.8 21l2.39-7.14L2 9.36h7.61L12 2z"/></svg>
+          </div>
+          <div>
+            <div class="hero-trust-title">30+ Years Combined</div>
+            <div class="hero-trust-sub">Industry Expertise</div>
+          </div>
         </div>
       </div>
     </div>
@@ -539,7 +580,10 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="https://paymegpt.com/objects/quick-uploads/218/d0a8b47609599c61.png" alt="DMV Surfaces" style="height:75px;width:auto;transform:scale(2.8);transform-origin:left center;margin-right:190px;display:block;">
+        <div style="display:inline-flex;flex-direction:column;align-items:flex-start;background:var(--white);padding:20px 28px 18px;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,0.25);margin-bottom:20px;border:1px solid rgba(200,169,81,0.2);">
+          <img src="https://paymegpt.com/objects/quick-uploads/218/850f7ff164dd3d84.png" alt="DMV Surfaces" style="height:88px;width:auto;display:block;">
+          <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--navy);white-space:nowrap;padding-left:2px;margin-top:-2px;opacity:0.85;">Commercial Flooring &amp; Consulting</span>
+        </div>
         <p>Premium commercial flooring installation and strategic consulting services across DC, Maryland & Virginia. Over 30 years of combined expertise.</p>
       </div>
       <div>
