@@ -1,6 +1,3 @@
-/* ═══════════════════════════════════════════════════════
-   DESIGN SYSTEM — DMV Surfaces
-   ═══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --navy: #0B1D3A; --navy-light: #132B52; --navy-mid: #1A2D4D;
@@ -117,24 +114,14 @@ h4 { font-size: 1.125rem; }
 .hero-slide:nth-child(1) { animation-delay: 0s; }
 .hero-slide:nth-child(2) { animation-delay: 8s; }
 .hero-slide:nth-child(3) { animation-delay: 16s; }
-@keyframes hero-slide-fade {
-  0%   { opacity: 0; transform: scale(1.08); }
-  4%   { opacity: 1; transform: scale(1.05); }
-  33%  { opacity: 1; transform: scale(1); }
-  37%  { opacity: 0; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1); }
-}
+@keyframes hero-slide-fade { 0% { opacity: 0; transform: scale(1.08); } 4% { opacity: 1; transform: scale(1.05); } 33% { opacity: 1; transform: scale(1); } 37% { opacity: 0; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
 .hero-progress { position: absolute; bottom: 110px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 12; }
 .hero-progress-dot { width: 48px; height: 3px; background: rgba(255, 255, 255, 0.25); border-radius: 2px; overflow: hidden; position: relative; }
 .hero-progress-dot::after { content: ''; position: absolute; inset: 0; background: var(--gold); transform-origin: left; transform: scaleX(0); animation: hero-progress-fill 24s linear infinite; }
 .hero-progress-dot:nth-child(1)::after { animation-delay: 0s; }
 .hero-progress-dot:nth-child(2)::after { animation-delay: 8s; }
 .hero-progress-dot:nth-child(3)::after { animation-delay: 16s; }
-@keyframes hero-progress-fill {
-  0%   { transform: scaleX(0); }
-  33%  { transform: scaleX(1); }
-  100% { transform: scaleX(1); }
-}
+@keyframes hero-progress-fill { 0% { transform: scaleX(0); } 33% { transform: scaleX(1); } 100% { transform: scaleX(1); } }
 .hero-container { position: relative; z-index: 10; width: 100%; max-width: 1400px; margin: 0 auto; padding: 160px 32px 180px; }
 .hero-content { position: relative; max-width: 720px; }
 .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
@@ -247,21 +234,14 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   .hero-progress { bottom: 230px; }
 }
 @media (max-width: 768px) {
-  /* Typography */
   h1 { font-size: 2rem; } h2 { font-size: 1.6rem; } h3 { font-size: 1.2rem; }
-
-  /* Layout */
   .section-pad { padding: 52px 0; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-
-  /* Header */
   .header-inner { padding: 0 16px; }
   .logo-img { height: 86px; margin: -8px 0; }
   .logo-subtitle { font-size: 0.54rem; letter-spacing: 0.16em; margin-top: -22px; }
   .hamburger { padding: 10px; }
-
-  /* Hero */
   .hero-container { padding: 120px 20px 220px; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
   .hero p { font-size: 0.95rem; margin-bottom: 32px; }
@@ -275,39 +255,22 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   .hero-trust-title { font-size: 0.82rem; }
   .hero-trust-sub { font-size: 0.7rem; }
   .hero-trust-icon { width: 36px; height: 36px; }
-
-  /* About */
   .about-img-card img { height: 240px; }
   .about-img-card:nth-child(1) { transform: translateY(-8px); }
   .about-img-card:nth-child(2) { transform: translateY(8px); }
-
-  /* Service cards */
   .service-card { padding: 28px 20px; }
-
-  /* Stats */
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-
-  /* Footer */
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-tagline-text { font-size: 1.5rem; }
-
-  /* Page heroes */
   .page-hero { padding: 120px 0 56px; }
   .page-hero h1 { font-size: 1.9rem; }
   .page-hero p { font-size: 0.95rem; }
   .breadcrumb { font-size: 0.78rem; }
-
-  /* Forms — font-size 16px prevents iOS auto-zoom */
   .form-control { font-size: 16px; }
   .btn { padding: 13px 24px; font-size: 0.88rem; }
-
-  /* Scroll to top — clear the AI widget */
   #scrollTopBtn { bottom: 100px; left: 16px; width: 40px; height: 40px; font-size: 18px; }
-
   .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-
-  /* CTA banner */
   .cta-banner { padding: 52px 0; }
   .cta-banner h2 { font-size: 1.6rem; }
 }
