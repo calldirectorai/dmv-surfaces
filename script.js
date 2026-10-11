@@ -86,9 +86,29 @@ function animateCounters() {
 }
 
 // ─── Contact Form ───
+// Spam protection: hidden honeypot field + minimum fill time (bots fill every field and submit instantly)
+var formLoadedAt = Date.now();
+(function addHoneypot() {
+  var f = document.getElementById('contact-form');
+  if (!f) return;
+  var wrap = document.createElement('div');
+  wrap.setAttribute('aria-hidden', 'true');
+  wrap.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden';
+  wrap.innerHTML = '<label for="c-website">Leave this field empty</label>' +
+    '<input type="text" id="c-website" name="website" tabindex="-1" autocomplete="off">';
+  f.appendChild(wrap);
+})();
+
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
+  var hp = document.getElementById('c-website');
+  if ((hp && hp.value) || (Date.now() - formLoadedAt) < 4000) {
+    // Looks like a bot: pretend success, send nothing
+    form.style.display = 'none';
+    document.getElementById('form-success').classList.remove('hidden');
+    return;
+  }
   var submitBtn = form.querySelector('[type="submit"]');
   var originalText = submitBtn.textContent;
   submitBtn.textContent = 'Sending...';
