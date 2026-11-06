@@ -285,6 +285,7 @@ var contactFormEl = document.getElementById('contact-form');
 if (contactFormEl) contactFormEl.addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
+  if (window.__dmvSpam && window.__dmvSpam(form)) { form.style.display = 'none'; document.getElementById('form-success').classList.remove('hidden'); setTimeout(resetContactForm, 15000); return; }
   var submitBtn = form.querySelector('[type="submit"]');
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
@@ -294,7 +295,7 @@ if (contactFormEl) contactFormEl.addEventListener('submit', function(e) {
   var service = document.getElementById('c-service').value.trim();
   var message = document.getElementById('c-message').value.trim();
   var payload = { contactPhone: phone, contactName: name, contactEmail: email, webhook_contactName: name, webhook_contactPhone: phone, webhook_contactEmail: email, webhook_service: service || 'Not specified', webhook_message: message || 'No message', webhook_source: 'DMV Surfaces Website', data: { service: service || 'Not specified', message: message || 'No message' } };
-  fetch('https://paymegpt.com/api/webhooks/flow/2330/181e13342e9fa2e746905acd01c727f21fe8e70c054c2ffc7a1f968e24b7e86f', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+  fetch('https://app.calldirector.ai/api/webhooks/flow/6285/ae1bcd67976406a312cda314e16de22795daa19cfa4fd5d97fbd3a29319ebeab', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
   .then(function(res) { return res.text().then(function(t) { console.log('[DMV Form] Status:', res.status, t); }); })
   .catch(function(err) { console.error('[DMV Form] Error:', err); })
   .finally(function() { form.style.display = 'none'; document.getElementById('form-success').classList.remove('hidden'); setTimeout(resetContactForm, 15000); });
@@ -311,6 +312,7 @@ document.addEventListener('submit', function(e) {
   if (e.target.id !== 'consult-form') return;
   e.preventDefault();
   var form = e.target;
+  if (window.__dmvSpam && window.__dmvSpam(form)) { form.style.display = 'none'; document.getElementById('consult-success').classList.remove('hidden'); setTimeout(resetConsultForm, 15000); return; }
   var submitBtn = document.getElementById('consult-submit-btn');
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
@@ -321,7 +323,7 @@ document.addEventListener('submit', function(e) {
   var topic = document.getElementById('con-topic').value.trim();
   var details = document.getElementById('con-details').value.trim();
   var payload = { contactPhone: phone, contactName: name, contactEmail: email, webhook_contactName: name, webhook_contactPhone: phone, webhook_contactEmail: email, webhook_service: 'Free Consultation - ' + (topic || 'Not specified'), webhook_message: (company ? 'Company: ' + company + ' | ' : '') + (details || 'No details'), webhook_source: 'DMV Surfaces - Free Consultation Form', data: { topic: topic, company: company, details: details } };
-  fetch('https://paymegpt.com/api/webhooks/flow/2330/181e13342e9fa2e746905acd01c727f21fe8e70c054c2ffc7a1f968e24b7e86f', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+  fetch('https://app.calldirector.ai/api/webhooks/flow/6285/ae1bcd67976406a312cda314e16de22795daa19cfa4fd5d97fbd3a29319ebeab', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
   .then(function(res) { return res.text(); })
   .catch(function(err) { console.error('[Consult Form] Error:', err); })
   .finally(function() { form.style.display = 'none'; document.getElementById('consult-success').classList.remove('hidden'); setTimeout(resetConsultForm, 15000); });
@@ -329,6 +331,53 @@ document.addEventListener('submit', function(e) {
 function resetConsultForm() { var form = document.getElementById('consult-form'); form.reset(); form.style.display = ''; document.getElementById('consult-success').classList.add('hidden'); var submitBtn = document.getElementById('consult-submit-btn'); submitBtn.disabled = true; submitBtn.style.opacity = '0.5'; }
 document.addEventListener('DOMContentLoaded', function() { observeElements(); handleScroll(); });
 </script>
-<script src="https://paymegpt.com/widget.js" data-widget="7558831" async defer></script>
+<style>
+#vera-bubble{position:fixed;right:24px;bottom:96px;z-index:999998;max-width:240px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 8px 24px rgba(11,29,58,.15);padding:14px 34px 14px 16px;font-size:14px;line-height:1.45;color:#0B1D3A;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;cursor:pointer}
+#vera-bubble.show{opacity:1;transform:none;pointer-events:auto}
+#vera-bubble strong{display:block;margin-bottom:2px}
+#vera-bubble button{position:absolute;top:6px;right:8px;border:0;background:none;font-size:18px;line-height:1;color:#6b7280;cursor:pointer;padding:2px}
+@media (prefers-reduced-motion:reduce){#vera-bubble{transition:none;transform:none}}
+.dmv-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+</style>
+<div id="vera-bubble" role="dialog" aria-live="polite" aria-label="Chat with Vera"><button type="button" aria-label="Dismiss">&times;</button><strong>Need a quick answer?</strong>Ask Vera about our flooring services, or request a free consultation.</div>
+<script>
+(function(){
+  var loadedAt = Date.now();
+  // Zero-spam guard for the site's own forms: honeypot, minimum time on page, automation check, links in the message.
+  window.__dmvSpam = function(form){
+    try {
+      var hp = form.querySelector('input[name="company_website"]');
+      if (hp && hp.value) return true;
+      if (Date.now() - loadedAt < 4000) return true;
+      if (navigator.webdriver) return true;
+      var txt = Array.prototype.map.call(form.querySelectorAll('textarea,input[type="text"]'), function(el){ return el.value || ''; }).join(' ');
+      if (/https?:\/\/|www\.|\[url|<a\s/i.test(txt)) return true;
+    } catch(e) {}
+    return false;
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    ['contact-form','consult-form'].forEach(function(id){
+      var f = document.getElementById(id); if (!f || f.querySelector('input[name="company_website"]')) return;
+      var w = document.createElement('div'); w.className = 'dmv-hp'; w.setAttribute('aria-hidden','true');
+      w.innerHTML = '<label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>';
+      f.appendChild(w);
+    });
+    var b = document.getElementById('vera-bubble'); if (!b) return;
+    var hideT, closed = false;
+    function hide(){ b.classList.remove('show'); }
+    function openChat(){
+      var l = document.querySelector('#paymegpt-widget-button, .paymegpt-widget-button, [id*="widget-launcher"], [class*="widget-launcher"], [id*="chat-launcher"], [class*="chat-button"]');
+      if (l) { l.click(); hide(); return true; }
+      return false;
+    }
+    window.__dmvOpenChat = function(){ if (!openChat()) { closed = false; b.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(hide, 15000); } };
+    b.querySelector('button').addEventListener('click', function(ev){ ev.stopPropagation(); closed = true; hide(); });
+    b.addEventListener('click', function(){ openChat(); });
+    setTimeout(function(){ if (!closed) { b.classList.add('show'); hideT = setTimeout(hide, 15000); } }, 2500);
+    document.querySelectorAll('[data-open-chat]').forEach(function(a){ a.addEventListener('click', function(ev){ ev.preventDefault(); window.__dmvOpenChat(); }); });
+  });
+})();
+</script>
+<script src="https://app.calldirector.ai/widget.js" data-widget="82963632" async></script>
 </body>
 </html>
